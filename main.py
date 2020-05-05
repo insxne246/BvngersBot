@@ -1,26 +1,39 @@
-import requests
-import json
+# Code for submitting soundcloud links.
+# Written by insxne
 
-url = ""
+import discord 
+import time
+from random import randint
+from discord.ext import commands
 
-data = {}
+bot = commands.Bot(command_prefix='>>') 
 
-data["content"] = ""
-data["username"] = "BVNGERS BOT"
+tracks = ['']
 
-#leave this out if you dont want an embed
-data["embeds"] = []
-embed = {}
+@bot.command(pass_context=True) 
+async def submit(ctx, arg):
+    channel = bot.get_channel(707329253422661682)
+    track = arg
+    if "https://soundcloud.com" in track:
 
-embed["description"] = "text in embed"
-embed["title"] = "embed title"
-data["embeds"].append(embed)
+        tracks.append(arg)
+        await ctx.send('Submitted your track!')
 
-result = requests.post(url, data=json.dumps(data), headers={"Content-Type": "application/json"})
+    else:
+        await channel.send("Invalid URL, must be soundcloud")
 
-try:
-    result.raise_for_status()
-except requests.exceptions.HTTPError as err:
-    print(err)
-else:
-    print("Payload delivered successfully, code {}.".format(result.status_code))
+
+
+@bot.command()
+async def lottery(ctx):
+    channel = bot.get_channel(707311172587749417)
+    selection = randint(1, len(tracks) - 1)
+    await channel.send('@everyone THE WINNER IS ' + tracks[selection])
+    del tracks[:]
+
+@bot.event 
+async def on_ready():
+    print('Logged in as:')
+    print(bot.user.name)
+
+bot.run('')
