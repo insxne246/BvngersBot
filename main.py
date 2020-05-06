@@ -1,5 +1,5 @@
 # Code for submitting soundcloud links.
-# Written by insxne
+# Written by insxne with help from toxic <33
 
 import discord 
 import time
