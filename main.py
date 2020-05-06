@@ -6,7 +6,7 @@ import time
 from random import randint
 from discord.ext import commands
 
-bot = commands.Bot(command_prefix='>>') 
+bot = commands.Bot(command_prefix='z') 
 bot.remove_command("help")
 
 tracks = ['']
@@ -44,10 +44,10 @@ async def linklist(ctx):
 
 @bot.command(pass_context=True)
 @commands.has_permissions(ban_members=True)
-async def removetrack(ctx, arg):
+async def removelink(ctx, arg):
     channel = bot.get_channel(707329253422661682)
     tracks.pop(int(arg))
-    await channel.send("Track " + str(arg) + " removed.")
+    await channel.send("Link " + str(arg) + " removed.")
 
 @bot.command()
 async def insxne(ctx):
@@ -75,4 +75,4 @@ async def on_ready():
     print(bot.user.name)
     await bot.change_presence(activity=discord.Game(name="Prefix: >>"))
 
-bot.run('')
+bot.run('NzA3Mjk2NDg0NzY0Mjg3MDQ4.XrGwNQ.gTXZvdlyVmQaMmoA_X78myEh1jE')
