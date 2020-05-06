@@ -57,6 +57,7 @@ async def linklist(ctx):
 @commands.has_permissions(ban_members=True)
 async def removelink(ctx, arg):
     channel = bot.get_channel(707329253422661682)
+    tracks.pop(int(arg))
     await channel.send("Link " + str(arg) + " removed.")
     print('')
     print('-Admin has removed link ' + str(arg))
