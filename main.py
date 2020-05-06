@@ -73,6 +73,6 @@ async def help(ctx):
 async def on_ready():
     print('Logged in as:')
     print(bot.user.name)
-    await bot.change_presence(activity=discord.Game(name="Prefix: >>"))
+    await bot.change_presence(activity=discord.Game(name="Prefix: z"))
 
-bot.run('NzA3Mjk2NDg0NzY0Mjg3MDQ4.XrGwNQ.gTXZvdlyVmQaMmoA_X78myEh1jE')
+bot.run('')
